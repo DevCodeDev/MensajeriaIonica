@@ -7,12 +7,27 @@
   </ion-navbar>
 </ion-header>
 
+
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  
+  <input type="text" placeholder="Buscar Amigo" [(ngModel)]="query" />
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <h5>Amigos</h5>
+  <ng-container *ngFor="let user of friends | search:query; let i = index">
+    <div *ngIf="user.friend">
+      <p (click)="goToConversation(user)">
+        {{user.uid}}.- {{user.nick}} - {{user.email}}
+      </p>
+    </div>
+  </ng-container>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <h5>No Agregados</h5>
+  <ng-container *ngFor="let user of friends; let i = index">
+    <p *ngIf="!user.friend">
+      {{user.uid}}.- {{user.nick}} - {{user.email}}
+    </p>
+
+  </ng-container>
+  <button ion-button (click)="goToConversation()">Ir a Conversation</button>
+  <button ion-button (click)="goToLogin()">Ir a Login</button>
 </ion-content>
