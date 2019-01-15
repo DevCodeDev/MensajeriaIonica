@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User,Status } from '../../app/interfaces/user';
+import { AngularFireDatabase } from "angularfire2/database";
 
 /*
   Generated class for the ServicesUserProvider provider.
@@ -11,70 +12,21 @@ import { User,Status } from '../../app/interfaces/user';
 @Injectable()
 export class ServicesUserProvider {
 
-  // friends : User[];
-
-  constructor(public http: HttpClient) {
-    console.log('Hello ServicesUserProvider Provider');
+  constructor(public http: HttpClient,
+              public angularFireDatabase: AngularFireDatabase) {
+    
   }
-    private friends: User[] = [
-    {
-      nick: 'Juan',
-      subnick: 'hola',
-      age: 28,
-      email: 'hfdkjshd@dhfj.com',
-      friend: false,
-      active: true,
-      status: Status.Online,
-      uid: 1
-    },
-    {
-      nick: 'manuel',
-      subnick: 'man',
-      age: 28,
-      email: 'mmmmmmm@dhfj.com',
-      friend: true,
-      active: true,
-      status: Status.AppearOffline,
-      uid: 2
-    },
-    {
-      nick: 'paola',
-      subnick: 'pao',
-      age: 15,
-      email: 'paopao@dhfj.com',
-      friend: true,
-      active: true,
-      status: Status.Away,
-      uid: 3
-    },
-    {
-      nick: 'kim',
-      subnick: 'kim',
-      age: 28,
-      email: 'kimkim@dhfj.com',
-      friend: true,
-      active: true,
-      status: Status.Busy,
-      uid: 4
-    },
-    {
-      nick: 'lao',
-      subnick: 'lao',
-      age: 28,
-      email: 'laolao@dhfj.com',
-      friend: true,
-      active: true,
-      status: Status.AppearOffline,
-      uid: 5
-    }];
-  
-    //this.friends = [ usuario1,usuario2,usuario3,usuario4,usuario5 ];
- 
-  getFriends(){
-    return this.friends;
+  public getUsers(){
+    return this.angularFireDatabase.list('/users/');
   }
-  add(user: User){
-    this.friends.push(user);
+  public getUserById(uid){
+      return this.angularFireDatabase.object('/users/' + uid);
   }
-
+  public createUser(user){
+      return this.angularFireDatabase.database.ref('/users/' + user.uid).set(user);
+  }
+  public editUser(user){
+      return this.angularFireDatabase.database.ref('/users/' + user.uid).set(user);
+  }
+   
 }

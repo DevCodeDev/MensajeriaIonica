@@ -28,22 +28,17 @@
 
       <ion-item>
         <ion-label floating>Nick</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" [(ngModel)]="nick"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label floating>Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label floating>Repetir</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input type="password" [(ngModel)]="password"></ion-input>
       </ion-item>
 
       <ion-item>
@@ -62,7 +57,7 @@
       <hr>
       <span>Aun no tengo Cuenta!. Haz Click aqui</span>
       <hr>
-        <button ion-button block>Ingresar</button>
-        <button ion-button block>Registrarse</button>
+        <button ion-button block (click)="ingresar()">Ingresar</button>
+        <button ion-button block (click)="register()">Registrarse</button>
     </div>
 </ion-content>

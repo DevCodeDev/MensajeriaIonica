@@ -4,6 +4,7 @@ import { ConversationPage } from '../conversation/conversation';
 import { LoginPage } from '../login/login';
 import { User, Status } from '../../app/interfaces/user';
 import { ServicesUserProvider } from '../../providers/services-user/services-user';
+import { AngularFireDatabase } from "angularfire2/database";
 
 @Component({
   selector: 'page-home',
@@ -14,10 +15,14 @@ export class HomePage {
   friends: User[];
   query:string = '';
   status: Status;
+  user: any = {};
   constructor(public navCtrl: NavController,
-              private servicesUserProvider:ServicesUserProvider) {
+              private servicesUserProvider:ServicesUserProvider,
+              public angularFireDatabase: AngularFireDatabase) {
     
-    this.friends = this.servicesUserProvider.getFriends();
+    this.user.id = Date.now();
+    this.angularFireDatabase.database.ref('users/' + this.user.id).set(this.user);
+
   }
 
   goToConversation(user:User){

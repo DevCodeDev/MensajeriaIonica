@@ -29,7 +29,7 @@ export class ConversationPage {
               private servicesUserProvider:ServicesUserProvider) {
     this.friendId = this.navParams.get('user');
     console.log(this.friendId);
-    this.friends = this.servicesUserProvider.getFriends();
+    //this.friendId = this.servicesUserProvider.getUsers();
     // console.log(this.friends);
     this.friend = this.friends.find((record) => {
       return record.uid == this.friendId;
