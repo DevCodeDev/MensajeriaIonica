@@ -4,22 +4,47 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Home</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only color="royal">
+        <img src="assets/img/logo_live_add.png" class="icon-in-button" alt="">
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  
-  <input type="text" placeholder="Buscar Amigo" [(ngModel)]="query" />
+<ion-content padding class="backgroundwoow">
+  <ion-grid id="homeContainer">
+    <ion-row>
+      <ion-col col-3>
+        <div class="avatarFrameonline">
+            <img src="assets/img/logo_live_offline.png" class="avatarImg img-fluid" alt="">
+        </div>
+      </ion-col>
+      <ion-col col-9>
+        Nick <br/>
+        <small>Subnick</small><br/>
+        <small><b>eduardo@platzi.com</b></small>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
-  <h5>Amigos</h5>
-  <ng-container *ngFor="let user of friends | search:query; let i = index">
-    <div *ngIf="user.friend">
-      <p (click)="goToConversation(user)">
-        {{user.uid}}.- {{user.nick}} - {{user.email}}
-      </p>
-    </div>
-  </ng-container>
+  <div class="searchBoxContainer">
+      <input type="text" placeholder="Buscar..." [(ngModel)]="query" />
+  </div>
+  <div>
+      <div>
+        <b>Amigos</b>
+      </div>
+      <div class="contact-list-item" [ngClass]="{'contact-offline': user.status == 'Offline' || user.status == 'AppearOffline'}"
+        [ngStyle]="{'color': user.status == 'Offline' || user.status == 'AppearOffline' ? 'red' : 'blue'}"
+         *ngFor="let user of friends | search:query let i = index" 
+            (click)="goToConversation(user)">
+        <img src="assets/img/{{getIconByStatus(user.status)}}" alt="" class="status">
+        <b>{{user.nick}}</b>  <small>correo: <b>{{user.email}}</b></small>  
+        <small *ngIf="user.status">{{user.status}}</small>
+      </div>
+  </div>
 
   <h5>No Agregados</h5>
   <ng-container *ngFor="let user of friends; let i = index">
@@ -28,6 +53,5 @@
     </p>
 
   </ng-container>
-  <button ion-button (click)="goToConversation()">Ir a Conversation</button>
-  <button ion-button (click)="goToLogin()">Ir a Login</button>
+
 </ion-content>

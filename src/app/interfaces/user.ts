@@ -1,3 +1,12 @@
+export enum Status {
+  Online = 'Online',
+  Offline = 'Offline',
+  Busy = 'Busy',
+  ApperOffline = 'AppearOffline',
+  Away = 'Away',
+  AppearOffline = "AppearOffline"
+}
+
 export interface User{
     nick: string;
     subnick?: string;
@@ -5,4 +14,7 @@ export interface User{
     email: string;
     friend: boolean;
     uid: any;
+    //
+    active: boolean;
+    status: Status;
 }

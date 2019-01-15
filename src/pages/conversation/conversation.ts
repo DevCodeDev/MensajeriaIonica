@@ -42,8 +42,8 @@ export class ConversationPage {
     console.log('ionViewDidLoad ConversationPage');
   }
 
-  goBack(){
-    this.navCtrl.setRoot(HomePage);
-  }
+  // goBack(){
+  //   this.navCtrl.setRoot(HomePage);
+  // }
 
 }

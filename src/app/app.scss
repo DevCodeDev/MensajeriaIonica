@@ -14,3 +14,33 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+
+.bposy0 {
+    background-position-y: 0px !important;
+}
+
+.avatarFrameoffline {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9c667+0,f79621+100 */
+    background: #f9c667; /* Old browsers */
+    background: -moz-linear-gradient(top, #f9c667 0%, #f79621 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f9c667 0%,#f79621 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f9c667 0%,#f79621 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9c667', endColorstr='#f79621',GradientType=0 ); /* IE6-9 */
+    padding: 6%;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.36);
+    box-shadow: 3px 3px 21px 1px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 3px 3px 21px 1px rgba(0,0,0,0.75); 
+}
+
+.backgroundwoow{
+    background-image: url(../assets/img/msnbg_tall.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: white;
+    background-position-y: 35px;
+}
+.icon-in-button{
+    width: 30px;
+}
