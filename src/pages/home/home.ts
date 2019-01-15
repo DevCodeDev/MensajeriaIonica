@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { ConversationPage } from '../conversation/conversation';
 import { LoginPage } from '../login/login';
+import { RegisterPage } from '../register/register';
 import { User, Status } from '../../app/interfaces/user';
 import { ServicesUserProvider } from '../../providers/services-user/services-user';
 import { AngularFireDatabase } from "angularfire2/database";
@@ -16,12 +17,18 @@ export class HomePage {
   query:string = '';
   status: Status;
   user: any = {};
+
+
   constructor(public navCtrl: NavController,
               private servicesUserProvider:ServicesUserProvider,
               public angularFireDatabase: AngularFireDatabase) {
     
-    this.user.id = Date.now();
-    this.angularFireDatabase.database.ref('users/' + this.user.id).set(this.user);
+    this.servicesUserProvider.getUsers().valueChanges()
+      .subscribe((data: User[])=>{
+        this.friends = data;
+      }, (error)=>{
+        console.log(error);
+      });
 
   }
 

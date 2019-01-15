@@ -22,8 +22,7 @@ export class ConversationPage {
   friendId: any;
   friends: User[];
   friend: User;
-  today:any = Date.now();
-  
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private servicesUserProvider:ServicesUserProvider) {
@@ -35,6 +34,12 @@ export class ConversationPage {
       return record.uid == this.friendId;
     });
     // console.log(this.friend);
+    this.servicesUserProvider.getUserById(this.friendId).valueChanges()
+     .subscribe((data: User)=>{
+       this.friend = data;
+     }, (error)=>{
+       console.log(error);
+     });
   }
 
 

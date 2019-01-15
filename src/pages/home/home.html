@@ -22,7 +22,7 @@
         </div>
       </ion-col>
       <ion-col col-9>
-        Nick <br/>
+        nick <br/>
         <small>Subnick</small><br/>
         <small><b>eduardo@platzi.com</b></small>
       </ion-col>
@@ -34,7 +34,10 @@
   </div>
   <div>
       <div>
-        <b>Amigos</b>
+        <b *ngIf="friends">Amigos {{friends.length}}</b>
+      </div>
+      <div>
+
       </div>
       <div class="contact-list-item" [ngClass]="{'contact-offline': user.status == 'Offline' || user.status == 'AppearOffline'}"
         [ngStyle]="{'color': user.status == 'Offline' || user.status == 'AppearOffline' ? 'red' : 'blue'}"
@@ -49,7 +52,7 @@
   <h5>No Agregados</h5>
   <ng-container *ngFor="let user of friends; let i = index">
     <p *ngIf="!user.friend">
-      {{user.uid}}.- {{user.nick}} - {{user.email}}
+      {{user.nick}} - {{user.email}}
     </p>
 
   </ng-container>
