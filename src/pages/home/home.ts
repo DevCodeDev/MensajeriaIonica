@@ -6,6 +6,8 @@ import { RegisterPage } from '../register/register';
 import { User, Status } from '../../app/interfaces/user';
 import { ServicesUserProvider } from '../../providers/services-user/services-user';
 import { AngularFireDatabase } from "angularfire2/database";
+import { AngularFireAuth } from 'angularfire2/auth';
+import firebase from 'firebase';
 
 @Component({
   selector: 'page-home',
@@ -62,6 +64,15 @@ export class HomePage {
           break;
     }
     return icon;
+  }
+
+  cerrar(){
+    firebase.auth().signOut()
+    .then(function(){
+      console.log("Saliendo");
+    }).catch((error)=>{
+      console.log(error);
+    })
   }
 
 }
