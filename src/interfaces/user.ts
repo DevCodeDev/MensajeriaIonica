@@ -2,19 +2,16 @@ export enum Status {
   Online = 'Online',
   Offline = 'Offline',
   Busy = 'Busy',
-  ApperOffline = 'AppearOffline',
-  Away = 'Away',
-  AppearOffline = "AppearOffline"
+  AppearOffline = 'Appear Offline',
+  Away = 'Away'
 }
 
 export interface User{
     nick: string;
-    subnick?: string;
     age?: number;
     email: string;
-    friend: boolean;
-    uid: any;
-    //
     active: boolean;
     status: Status;
+    uid: any;
+    
 }

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User,Status } from '../../app/interfaces/user';
+//import { User,Status } from '../app/interfaces/user';
 import { AngularFireDatabase } from "angularfire2/database";
 
 /*

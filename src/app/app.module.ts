@@ -10,19 +10,36 @@ import { RegisterPage } from '../pages/register/register';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPageModule } from '../pages/login/login.module';
-import { ConversationPageModule } from '../pages/conversation/conversation.module';
-import { ProfilePageModule } from '../pages/profile/profile.module';
 import { AcercaPageModule } from '../pages/acerca/acerca.module';
 import { ServicesUserProvider } from '../providers/services-user/services-user';
 import { HttpModule } from '@angular/http';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { SearchPipe } from './pipes/search';
+import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from '../pipes/search';
 import { FormsModule } from '@angular/forms';
+
+import {LoginPage} from '../pages/login/login';
+import {ConversationPage} from '../pages/conversation/conversation';
+import {UserService} from '../services/user';
+
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {AuthService} from "../services/auth";
+import {ProfilePage} from "../pages/profile/profile";
 
 // firebase
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {AngularFireAuthModule} from 'angularfire2/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+import { Facebook } from '@ionic-native/facebook';
+
+import {ProfilePageModule} from "../pages/profile/profile.module";
+import {ConversationService} from "../services/conversation";
+import {RequestService} from "../services/request";
+
+import {Camera} from "@ionic-native/camera";
+import {Vibration} from "@ionic-native/vibration";
+
 
 
 
@@ -40,18 +57,20 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     ListPage,
+    LoginPage,
     RegisterPage,
-    SearchPipe  
+    SearchPipe,
+    ConversationPage,
+    ProfilePage  
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFontAwesomeModule,
     AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireStorageModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    LoginPageModule,
-    ConversationPageModule,
-    ProfilePageModule,
     AcercaPageModule,
     HttpModule,
     HttpClientModule,
@@ -62,13 +81,23 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     RegisterPage,
-    ListPage
+    ListPage,
+    LoginPage,
+    ConversationPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ServicesUserProvider
+    Facebook,
+    UserService,
+    AuthService,
+    ServicesUserProvider,
+    Camera,
+    ConversationService,
+    Vibration,
+    RequestService
   ]
 })
 export class AppModule {}
